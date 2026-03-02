@@ -15,4 +15,4 @@ async def heh(ctx, count_heh = 5):
 @bot.command()
 async def tio(ctx):
     await ctx.send(f'Hola tio como estas{bot.user}!')
-bot.run("MTQ3MzEyMDk4MzA0NDA2MzIzMw.GUydcj.bGgToKogUD7h4gk93o7BJLJGmC-bO_TQstx1T8")
+bot.run("MTQ3NDk1ODg1NjQ3MDc5MDMyNA.G5NTEP.YPldwUHKwAJzcLmfld4A_Fj9-SdAQMbNIFbEi8")
