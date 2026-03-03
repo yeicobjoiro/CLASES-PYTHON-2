@@ -5,14 +5,37 @@ intents.message_content = True
 bot = commands.Bot(command_prefix='$', intents=intents)
 @bot.event
 async def on_ready():
-    print(f'We have logged in as {bot.user}')
+    print(f'Bot ecológico conectado como {bot.user}')
+# Diccionario de residuos
+residuos = {
+    "plastico": "♻️ Reciclable",
+    "papel": "♻️ Reciclable",
+    "carton": "♻️ Reciclable",
+    "vidrio": "♻️ Reciclable",
+    "lata": "♻️ Reciclable",
+    "banana": "🌱 Orgánico",
+    "manzana": "🌱 Orgánico",
+    "restos de comida": "🌱 Orgánico",
+    "pañal": "🗑️ Basura",
+    "colilla": "🗑️ Basura",
+    "papel higienico": "🗑️ Basura"
+}
 @bot.command()
-async def hello(ctx):
-    await ctx.send(f'Hola, soy un bot {bot.user}!')
-@bot.command()
-async def heh(ctx, count_heh = 5):
-    await ctx.send("he" * count_heh)
-@bot.command()
-async def tio(ctx):
-    await ctx.send(f'Hola tio como estas{bot.user}!')
-bot.run("MTQ3NDk1ODg1NjQ3MDc5MDMyNA.G5NTEP.YPldwUHKwAJzcLmfld4A_Fj9-SdAQMbNIFbEi8")
+async def residuo(ctx, *, nombre):
+    nombre = nombre.lower()
+    if nombre in residuos:
+        await ctx.send(f"🔍 **{nombre}** → {residuos[nombre]}")
+        with open("images/"+nombre+".jpg", 'rb') as f:
+        # ¡Vamos a almacenar el archivo de la biblioteca Discord convertido en esta variable!
+            picture = discord.File(f)
+    # A continuación, podemos enviar este archivo como parámetro.
+        await ctx.send(file=picture)
+    else:
+        await ctx.send(
+            f"🤔 No sé qué hacer con **{nombre}**.\n"
+            "Pregunta a un experto o revisa normas locales."
+        )
+
+
+
+bot.run("MTQ3MzEyMDk4MzA0NDA2MzIzMw.GEFBt_.-R1csS_Ia1cdah7jDlq_Z26rbgbrrwYCXyAsYI")
